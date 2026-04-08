@@ -1,5 +1,5 @@
 import { useNavigation } from "./navigation-context";
-import teknasLogo from "figma:asset/0782cf6d2e471283b31a4890c291dd82863dc492.png";
+import teknasLogo from "/Teknas favicon.png";
 import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Youtube, Linkedin } from "lucide-react";
 
 const GOLD = "#d4a24e";
