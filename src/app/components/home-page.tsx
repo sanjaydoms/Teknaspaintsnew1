@@ -8,7 +8,7 @@ import { useSEO } from "./use-seo";
 
 /* ── Real product images (only used ones) ── */
 const imgEcoTurpPlus = "/ecoturp-bottlemockup2.png";
-const imgEcoPrimaxPlusBucket = "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
+const imgEcoPrimaxPlusBucket = "/eco primax + bucket label@2x@2x.png";
 const imgEcoPrimaxBase = "https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
 const imgTexnasMarbleFront = "https://images.unsplash.com/photo-1604147706283-d7119b5b822c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
 const imgEcoPrimaxProBucket = "https://images.unsplash.com/photo-1572202730209-7d825d069571?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
