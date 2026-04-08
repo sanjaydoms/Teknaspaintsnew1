@@ -7,11 +7,11 @@ import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight, Play, Leaf, Shield
 import { useSEO } from "./use-seo";
 
 /* ── Real product images (only used ones) ── */
-import imgEcoTurpPlus from "figma:asset/f717437fa8b95d80708eb097bce5a470bd1af8a2.png";
-import imgEcoPrimaxPlusBucket from "figma:asset/a9451194462fff0c801e1591013687f39264e8a1.png";
-import imgEcoPrimaxBase from "figma:asset/e83e811049e145916b50f7424262fbade4e8e3c6.png";
-import imgTexnasMarbleFront from "figma:asset/c2b21f1944f85b44af247f1116756bfbae8bbafb.png";
-import imgEcoPrimaxProBucket from "figma:asset/74a8bc66dcf93c20b02812dbe3aa28edceabc3dc.png";
+const imgEcoTurpPlus = "https://images.unsplash.com/photo-1572635196237-14b3f281503f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
+const imgEcoPrimaxPlusBucket = "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
+const imgEcoPrimaxBase = "https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
+const imgTexnasMarbleFront = "https://images.unsplash.com/photo-1604147706283-d7119b5b822c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
+const imgEcoPrimaxProBucket = "https://images.unsplash.com/photo-1572202730209-7d825d069571?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
 
 /* ═══════════════════════════════════════════════════════
    PALETTE & CONSTANTS
@@ -224,7 +224,6 @@ function HeroSection() {
       style={{ height: "100svh", minHeight: 700, maxHeight: 1100 }}
       onMouseMove={handleMouseMove}
     >
-      {/* ── Background imagery with Ken Burns ── */}
       {HERO_SLIDES.map((s, i) => (
         <motion.div
           key={i}
@@ -245,7 +244,6 @@ function HeroSection() {
         </motion.div>
       ))}
 
-      {/* ── Multi-layer cinematic overlay — lighter to let images shine ── */}
       <div className="absolute inset-0 z-[1]" style={{
         background: `
           linear-gradient(155deg, ${DARK_NAVY}cc 0%, ${DARK_NAVY}88 25%, ${DARK_NAVY}30 50%, transparent 75%, ${DARK_NAVY}15 100%),
@@ -254,26 +252,21 @@ function HeroSection() {
         `,
       }} />
 
-      {/* ── Vibrant color accent at top ── */}
       <div className="absolute top-0 left-0 right-0 h-[3px] z-[6]" style={{
         background: `linear-gradient(to right, ${slide.color}, ${GOLD}, ${slide.color})`,
         transition: "background 1s ease",
         boxShadow: `0 0 20px ${slide.color}50`,
       }} />
 
-      {/* ── Grain texture ── */}
       <div className="absolute inset-0 z-[2] pointer-events-none opacity-[0.025]" style={{
         backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
         backgroundSize: "128px 128px",
       }} />
 
-      {/* ── Ambient particles ── */}
       <FloatingPaintParticles />
 
-      {/* ── Decorative vertical accent line (left) ── */}
       <div className="absolute z-[3] left-6 sm:left-10 md:left-14 lg:left-20 xl:left-28 2xl:left-[140px] top-[25%] bottom-[30%] w-[1px] hidden md:block" style={{ background: `linear-gradient(to bottom, transparent, ${slide.color}40, transparent)`, transition: "background 1s ease" }} />
 
-      {/* ── Slide counter (left edge, vertical) ── */}
       <div className="absolute z-[5] left-6 sm:left-10 md:left-14 lg:left-20 xl:left-28 2xl:left-[140px] top-1/2 -translate-y-1/2 hidden md:flex flex-col items-center gap-4">
         <span className="font-['Fira_Sans',sans-serif] text-[clamp(11px,0.7vw,13px)] tracking-[3px]" style={{ fontWeight: 600, color: slide.color, transition: "color 0.7s ease" }}>{padNum(current)}</span>
         <div className="w-[1px] h-16 relative overflow-hidden" style={{ backgroundColor: "rgba(255,255,255,0.12)" }}>
@@ -289,13 +282,10 @@ function HeroSection() {
         <span className="font-['Fira_Sans',sans-serif] text-[clamp(11px,0.7vw,13px)] tracking-[3px] text-white/30" style={{ fontWeight: 400 }}>{padNum(HERO_SLIDES.length - 1)}</span>
       </div>
 
-      {/* ── Main content grid ── */}
       <div className={`absolute inset-0 z-[4] flex items-center ${SECTION_PX}`}>
         <div className="w-full max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 lg:gap-20 items-center">
 
-          {/* Left column — Editorial text */}
           <div className="max-w-[680px] md:pl-8 lg:pl-14">
-            {/* Tag line */}
             <motion.div
               className="flex items-center gap-4 mb-6 lg:mb-8"
               initial={{ opacity: 0, x: -40 }}
@@ -314,7 +304,6 @@ function HeroSection() {
               </div>
             </motion.div>
 
-            {/* Main heading — oversized editorial */}
             <motion.div
               className="mb-6 lg:mb-8"
               initial={{ opacity: 0, y: 50 }}
@@ -342,7 +331,6 @@ function HeroSection() {
               </h1>
             </motion.div>
 
-            {/* Description */}
             <motion.p
               className="font-['Fira_Sans',sans-serif] text-[clamp(13px,1.05vw,16px)] leading-[1.9] max-w-[440px] mb-8 lg:mb-10"
               style={{ color: "rgba(255,255,255,0.72)", fontWeight: 300 }}
@@ -354,7 +342,6 @@ function HeroSection() {
               {slide.description}
             </motion.p>
 
-            {/* CTAs */}
             <motion.div
               className="flex items-center gap-4 flex-wrap"
               initial={{ opacity: 0, y: 24 }}
@@ -382,7 +369,6 @@ function HeroSection() {
               </button>
             </motion.div>
 
-            {/* Trust badges */}
             <motion.div
               className="flex items-center gap-5 mt-8 lg:mt-12"
               initial={{ opacity: 0 }}
@@ -403,7 +389,6 @@ function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Right column — Vivid stacked cards with colour palette */}
           <motion.div
             className="hidden lg:flex flex-col items-end gap-5"
             initial={{ opacity: 0, x: 50, scale: 0.95 }}
@@ -411,33 +396,25 @@ function HeroSection() {
             transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
             key={`card-${current}`}
           >
-            {/* Main image card with vivid glow */}
             <div className="relative group cursor-pointer" data-cursor="view">
-              {/* Glow effect behind card */}
               <div className="absolute -inset-6 rounded-[34px] opacity-40 blur-2xl transition-all duration-1000" style={{ background: `radial-gradient(circle, ${slide.color}60 0%, transparent 70%)` }} />
               <div
                 className="relative w-[240px] xl:w-[280px] h-[300px] xl:h-[350px] rounded-[24px] overflow-hidden transition-all duration-700 group-hover:scale-[1.04] group-hover:shadow-2xl"
                 style={{ boxShadow: `0 32px 80px ${slide.color}30, 0 0 0 1px rgba(255,255,255,0.1) inset` }}
               >
-                {/* Room image background */}
                 <div className="absolute inset-0 transition-transform duration-[1.5s] group-hover:scale-110" style={{
                   backgroundImage: `url('${slide.image}')`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }} />
-                {/* Gradient overlay on card */}
                 <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${DARK_NAVY}dd 0%, ${DARK_NAVY}20 40%, transparent 60%)` }} />
-                {/* Glass sheen */}
                 <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 50%)" }} />
-                {/* View icon */}
                 <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-xl flex items-center justify-center border border-white/15 opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:rotate-12">
                   <Eye size={16} className="text-white" />
                 </div>
-                {/* Bottom card info */}
                 <div className="absolute bottom-0 left-0 right-0 p-5 xl:p-6">
                   <p className="font-['Fira_Sans',sans-serif] text-[17px] xl:text-[19px] text-white m-0" style={{ fontWeight: 600 }}>{slide.headingAccent}</p>
                   <p className="font-['Fira_Sans',sans-serif] text-[11px] text-white/50 m-0 mt-1.5 tracking-[1.5px] uppercase" style={{ fontWeight: 400 }}>{slide.tag}</p>
-                  {/* Colour swatches row */}
                   <div className="flex items-center gap-2 mt-3.5">
                     {slide.swatchColors.map((c, j) => (
                       <div key={j} className="w-7 h-7 rounded-full border-2 border-white/25 transition-transform duration-300 hover:scale-125 hover:border-white/60" style={{ backgroundColor: c, boxShadow: `0 4px 12px ${c}50` }} />
@@ -450,7 +427,6 @@ function HeroSection() {
               </div>
             </div>
 
-            {/* Stat pill with glow */}
             <div className="relative w-[240px] xl:w-[280px]">
               <div className="absolute -inset-2 rounded-[20px] opacity-20 blur-lg" style={{ backgroundColor: slide.color }} />
               <div className="relative bg-white/[0.08] backdrop-blur-2xl rounded-[18px] px-5 py-4 border border-white/[0.1] flex items-center gap-4">
@@ -464,7 +440,6 @@ function HeroSection() {
               </div>
             </div>
 
-            {/* Star rating */}
             <div className="flex items-center gap-3 px-2 w-[240px] xl:w-[280px]">
               <div className="flex gap-0.5">{[1,2,3,4,5].map(j => <Star key={j} size={13} fill={GOLD} className="text-[#d4a24e]" />)}</div>
               <span className="font-['Fira_Sans',sans-serif] text-[11px] text-white/50" style={{ fontWeight: 400 }}>4.9 (2,400+ reviews)</span>
@@ -473,7 +448,6 @@ function HeroSection() {
         </div>
       </div>
 
-      {/* ── Navigation arrows (mobile only — desktop arrows in bottom bar) ── */}
       <button onClick={prev} className="absolute z-[5] left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full border border-white/[0.06] bg-white/[0.02] backdrop-blur-2xl cursor-pointer flex items-center justify-center transition-all duration-500 hover:bg-white/[0.08] hover:border-white/15 md:hidden">
         <ChevronLeft size={18} className="text-white/50" />
       </button>
@@ -481,10 +455,8 @@ function HeroSection() {
         <ChevronRight size={18} className="text-white/50" />
       </button>
 
-      {/* ── Bottom bar: indicators + scroll cue ── */}
       <div className={`absolute z-[5] bottom-0 left-0 right-0 ${SECTION_PX}`}>
         <div className="max-w-[1400px] mx-auto flex items-end justify-between pb-8 lg:pb-10">
-          {/* Slide indicators — animated capsules */}
           <div className="flex items-center gap-3">
             {HERO_SLIDES.map((s, i) => (
               <button
@@ -520,7 +492,6 @@ function HeroSection() {
             ))}
           </div>
 
-          {/* Desktop nav arrows + scroll cue */}
           <div className="hidden md:flex items-center gap-4">
             <button onClick={prev} className="w-10 h-10 rounded-full border border-white/[0.08] bg-transparent cursor-pointer flex items-center justify-center transition-all duration-400 hover:bg-white/[0.06] hover:border-white/15">
               <ChevronLeft size={16} className="text-white/50" />
@@ -537,7 +508,6 @@ function HeroSection() {
         </div>
       </div>
 
-      {/* ── Top-right decorative circles with glow ── */}
       <div className="absolute z-[3] top-[15%] right-[6%] w-[220px] h-[220px] hidden xl:block pointer-events-none" style={{
         border: `1.5px solid ${slide.color}20`,
         borderRadius: "50%",
@@ -546,11 +516,9 @@ function HeroSection() {
       }}>
         <div className="absolute inset-5 rounded-full" style={{ border: `1px solid ${slide.color}15` }} />
         <div className="absolute inset-10 rounded-full" style={{ border: `1px solid ${slide.color}10` }} />
-        {/* Glowing dot */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full" style={{ backgroundColor: slide.color, boxShadow: `0 0 12px ${slide.color}80`, transition: "all 1s ease" }} />
       </div>
 
-      {/* ── Bottom progress line ── */}
       <div className="absolute bottom-0 left-0 w-full h-[2px] z-[6] bg-white/[0.03]">
         <motion.div
           className="h-full"
@@ -578,7 +546,6 @@ function BrandMarquee() {
       <div className="absolute inset-0 opacity-[0.06]" style={{
         backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
       }} />
-      {/* Fade edges for premium look */}
       <div className="absolute top-0 bottom-0 left-0 w-[80px] lg:w-[140px] z-[1] pointer-events-none" style={{ background: `linear-gradient(to right, ${SAGE}, transparent)` }} />
       <div className="absolute top-0 bottom-0 right-0 w-[80px] lg:w-[140px] z-[1] pointer-events-none" style={{ background: `linear-gradient(to left, ${SAGE}, transparent)` }} />
       <style>{`@keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }`}</style>
@@ -631,7 +598,6 @@ function ColourExplorer() {
 
   return (
     <div className="w-full relative overflow-hidden" style={{ backgroundColor: CANVAS }}>
-      {/* Header */}
       <div className={`pt-20 lg:pt-24 xl:pt-[120px] pb-10 lg:pb-14 ${SECTION_PX}`}>
         <ScrollReveal>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
@@ -651,11 +617,9 @@ function ColourExplorer() {
         </ScrollReveal>
       </div>
 
-      {/* Immersive viewer */}
       <ScrollReveal>
         <div className={`pb-0 ${SECTION_PX}`}>
           <div className="relative w-full rounded-t-[28px] lg:rounded-t-[36px] overflow-hidden" style={{ minHeight: 560 }}>
-            {/* Crossfading room images */}
             {TRENDING_COLORS.map((c, i) => (
               <div
                 key={c.name}
@@ -671,13 +635,10 @@ function ColourExplorer() {
               </div>
             ))}
 
-            {/* Gradient overlays */}
             <div className="absolute inset-0 z-[2]" style={{ background: "linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 55%, transparent 100%)" }} />
             <div className="absolute inset-0 z-[2]" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 40%)" }} />
 
-            {/* Content */}
             <div className="relative z-[3] flex flex-col lg:flex-row h-full min-h-[560px]">
-              {/* Left info */}
               <div className="flex-1 flex flex-col justify-end p-8 lg:p-12 xl:p-16 pb-32 lg:pb-16">
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -711,7 +672,6 @@ function ColourExplorer() {
                 </AnimatePresence>
               </div>
 
-              {/* Right: floating paint swatch */}
               <div className="hidden xl:flex items-end justify-end p-16 pr-20">
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -737,7 +697,6 @@ function ColourExplorer() {
               </div>
             </div>
 
-            {/* Bottom colour strip */}
             <div className="absolute bottom-0 left-0 right-0 z-[4]">
               <div className="flex items-stretch w-full">
                 {TRENDING_COLORS.map((c, i) => {
@@ -850,7 +809,6 @@ function ProductCategories() {
 
   return (
     <div className="w-full bg-white py-20 lg:py-24 xl:py-[120px]">
-      {/* ── Section Header ── */}
       <div className={`flex flex-col md:flex-row md:items-end justify-between mb-14 lg:mb-[70px] gap-6 ${SECTION_PX}`}>
         <ScrollReveal>
           <div className="flex items-center gap-3.5 mb-4">
@@ -869,9 +827,7 @@ function ProductCategories() {
         </ScrollReveal>
       </div>
 
-      {/* ── Category Cards — Product-first clean design ── */}
       <div className={`${SECTION_PX}`}>
-        {/* Top row: 3 large cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 mb-5 lg:mb-6">
           {PRODUCT_CATEGORIES.slice(0, 3).map((cat, i) => {
             const accent = CATEGORY_ACCENTS[i];
@@ -891,9 +847,7 @@ function ProductCategories() {
                     boxShadow: isHov ? `0 28px 60px ${accent}25, 0 0 0 1px ${accent}15` : `0 4px 20px rgba(0,0,0,0.04)`,
                   }}
                 >
-                  {/* Product image area */}
                   <div className="relative flex items-center justify-center pt-10 pb-4 lg:pt-12 lg:pb-5 h-[260px] sm:h-[280px] lg:h-[320px]">
-                    {/* Soft radial glow behind product */}
                     <div
                       className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] rounded-full pointer-events-none transition-all duration-700"
                       style={{
@@ -911,7 +865,6 @@ function ProductCategories() {
                       }}
                     />
                   </div>
-                  {/* Info area */}
                   <div className="relative px-7 lg:px-8 pb-7 lg:pb-8">
                     <div className="flex items-center gap-2 mb-2.5">
                       <div className="w-[6px] h-[6px] rounded-full" style={{ backgroundColor: accent }} />
@@ -925,7 +878,6 @@ function ProductCategories() {
                     <p className="font-['Fira_Sans',sans-serif] text-[13px] leading-[21px] m-0 mb-4" style={{ color: `${DARK_NAVY}55`, fontWeight: 300 }}>
                       {cat.description}
                     </p>
-                    {/* Explore link */}
                     <div className="flex items-center gap-2 transition-all duration-500" style={{ transform: isHov ? "translateX(4px)" : "translateX(0)" }}>
                       <span className="font-['Fira_Sans',sans-serif] text-[12px] tracking-[2px] uppercase" style={{ color: accent, fontWeight: 600 }}>Explore</span>
                       <ArrowRight size={14} className="transition-transform duration-500" style={{ color: accent, transform: isHov ? "translateX(4px)" : "translateX(0)" }} />
@@ -936,7 +888,6 @@ function ProductCategories() {
             );
           })}
         </div>
-        {/* Bottom row: 2 wide cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-6">
           {PRODUCT_CATEGORIES.slice(3).map((cat, rawI) => {
             const i = rawI + 3;
@@ -958,7 +909,6 @@ function ProductCategories() {
                   }}
                 >
                   <div className="flex flex-col sm:flex-row items-center">
-                    {/* Product image — left side */}
                     <div className="relative flex items-center justify-center w-full sm:w-[45%] h-[220px] sm:h-[260px] lg:h-[280px] shrink-0">
                       <div
                         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[65%] h-[65%] rounded-full pointer-events-none transition-all duration-700"
@@ -977,7 +927,6 @@ function ProductCategories() {
                         }}
                       />
                     </div>
-                    {/* Info — right side */}
                     <div className="flex-1 px-7 pb-7 sm:py-8 sm:pr-8 sm:pl-0 lg:pr-10 lg:py-10">
                       <div className="flex items-center gap-2 mb-2.5">
                         <div className="w-[6px] h-[6px] rounded-full" style={{ backgroundColor: accent }} />
@@ -1004,7 +953,6 @@ function ProductCategories() {
         </div>
       </div>
 
-      {/* ── Best Sellers Showcase ── */}
       <ScrollReveal className="mt-20 lg:mt-24">
         <div className={`flex items-center justify-between mb-10 lg:mb-12 ${SECTION_PX}`}>
           <div>
@@ -1042,12 +990,10 @@ function ProductCategories() {
               onClick={() => scrollToProduct(i)}
             >
               <div className="flex flex-col lg:flex-row h-full">
-                {/* Left — Product image on gradient background */}
                 <div
                   className="relative w-full lg:w-[320px] xl:w-[345px] h-[280px] lg:h-auto shrink-0 flex items-center justify-center overflow-hidden"
                   style={{ background: `linear-gradient(160deg, ${p.accentLight} 0%, ${p.color}12 100%)` }}
                 >
-                  {/* Radial glow */}
                   <div
                     className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[75%] h-[75%] rounded-full pointer-events-none"
                     style={{ background: `radial-gradient(circle, ${p.color}15 0%, transparent 70%)` }}
@@ -1058,7 +1004,6 @@ function ProductCategories() {
                     className="relative z-10 object-contain max-h-[220px] lg:max-h-[300px] w-auto transition-transform duration-700 ease-out group-hover:scale-105 group-hover:-translate-y-2"
                     style={{ filter: `drop-shadow(0 20px 40px ${p.color}30)` }}
                   />
-                  {/* Badges overlaid on image */}
                   <div className="absolute top-5 left-5 flex flex-col gap-1.5 z-20">
                     {p.badges.map((badge) => (
                       <span
@@ -1073,14 +1018,12 @@ function ProductCategories() {
                   </div>
                 </div>
 
-                {/* Right — Details */}
                 <div className="flex-1 p-7 lg:px-10 lg:py-9 flex flex-col justify-between">
                   <div>
                     <p className="font-['Fira_Sans',sans-serif] text-[11px] tracking-[3px] uppercase m-0 mb-2.5" style={{ color: p.color, fontWeight: 500 }}>Teknas Paints</p>
                     <h4 className="font-['Fira_Sans',sans-serif] text-[26px] lg:text-[32px] m-0 mb-1.5" style={{ color: DARK_NAVY, fontWeight: 700, lineHeight: 1.15 }}>{p.name}</h4>
                     <p className="font-['Fira_Sans',sans-serif] text-[14px] m-0 mb-6" style={{ color: `${DARK_NAVY}50`, lineHeight: "21px" }}>{p.tagline}</p>
 
-                    {/* Star rating */}
                     <div className="flex items-center gap-2 mb-6 flex-wrap">
                       <div className="flex gap-0.5">
                         {Array.from({ length: 5 }).map((_, j) => {
@@ -1096,7 +1039,6 @@ function ProductCategories() {
                       <span className="font-['Fira_Sans',sans-serif] text-[13px]" style={{ color: `${DARK_NAVY}40` }}>({p.reviews.toLocaleString()} reviews)</span>
                     </div>
 
-                    {/* Spec pills */}
                     <div className="flex items-center gap-2 lg:gap-2.5 flex-wrap mb-7">
                       <SpecPill label="Coverage" value={p.coverage} color={p.color} />
                       <SpecPill label="Finish" value={p.finish} color={p.color} />
@@ -1104,7 +1046,6 @@ function ProductCategories() {
                     </div>
                   </div>
 
-                  {/* Price + CTA */}
                   <div className="flex items-end justify-between gap-4 flex-wrap">
                     <div>
                       <span className="font-['Fira_Sans',sans-serif] text-[12px] block mb-1" style={{ color: `${DARK_NAVY}40` }}>Starting from</span>
@@ -1128,7 +1069,6 @@ function ProductCategories() {
           ))}
         </div>
 
-        {/* Pagination dots */}
         <div className="flex items-center justify-center gap-3 mt-8">
           {PRODUCT_SHOWCASE.map((p, i) => (
             <button key={p.name} onClick={() => scrollToProduct(i)} className="cursor-pointer border-0 bg-transparent p-0" style={{ width: activeProduct === i ? 40 : 10, height: 10 }}>
@@ -1196,7 +1136,6 @@ function ColourGuideSection() {
     <div className={`w-full py-20 lg:py-24 xl:py-[120px] ${SECTION_PX}`} style={{ backgroundColor: CANVAS }}>
       <div className="max-w-[1400px] mx-auto">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 xl:gap-20">
-          {/* ── Left: Heading + Room Thumbnails ── */}
           <ScrollReveal className="lg:w-[38%] xl:w-[36%] shrink-0">
             <div>
               <div
@@ -1253,7 +1192,6 @@ function ColourGuideSection() {
             </div>
           </ScrollReveal>
 
-          {/* ── Right: Room Visualisation + Controls ── */}
           <ScrollReveal direction="right" className="flex-1">
             <div>
               <div className="relative w-full rounded-[20px] lg:rounded-[24px] overflow-hidden" style={{ aspectRatio: "16 / 10" }}>
@@ -1313,20 +1251,12 @@ function ColourGuideSection() {
               <div className="mt-5 lg:mt-6">
                 <div className="flex flex-wrap items-center gap-x-8 gap-y-2 mb-4">
                   <div className="flex items-center gap-2">
-                    <span className="font-['Jost',sans-serif] text-[12px] tracking-[1px] uppercase" style={{ color: `${DARK_NAVY}55`, fontWeight: 500 }}>
-                      Colour Name :
-                    </span>
-                    <span className="font-['Jost',sans-serif] text-[14px]" style={{ color: DARK_NAVY, fontWeight: 600 }}>
-                      {colour.name}
-                    </span>
+                    <span className="font-['Jost',sans-serif] text-[12px] tracking-[1px] uppercase" style={{ color: `${DARK_NAVY}55`, fontWeight: 500 }}>Colour Name :</span>
+                    <span className="font-['Jost',sans-serif] text-[14px]" style={{ color: DARK_NAVY, fontWeight: 600 }}>{colour.name}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="font-['Jost',sans-serif] text-[12px] tracking-[1px] uppercase" style={{ color: `${DARK_NAVY}55`, fontWeight: 500 }}>
-                      Colour Code :
-                    </span>
-                    <span className="font-['Jost',sans-serif] text-[14px]" style={{ color: DARK_NAVY, fontWeight: 600 }}>
-                      {colour.code}
-                    </span>
+                    <span className="font-['Jost',sans-serif] text-[12px] tracking-[1px] uppercase" style={{ color: `${DARK_NAVY}55`, fontWeight: 500 }}>Colour Code :</span>
+                    <span className="font-['Jost',sans-serif] text-[14px]" style={{ color: DARK_NAVY, fontWeight: 600 }}>{colour.code}</span>
                   </div>
                 </div>
 
@@ -1430,7 +1360,6 @@ const USP_POINTS = [
 function WhyTeknasSection() {
   return (
     <div className="w-full relative overflow-hidden">
-      {/* Stats bar — dramatic */}
       <div className={`py-16 lg:py-20 ${SECTION_PX} relative`} style={{ backgroundColor: SAGE }}>
         <div className="absolute inset-0 opacity-[0.06]" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
@@ -1447,7 +1376,6 @@ function WhyTeknasSection() {
         </div>
       </div>
 
-      {/* USPs */}
       <div className={`bg-[#f5f2ec] py-20 lg:py-24 xl:py-[120px] ${SECTION_PX}`}>
         <ScrollReveal>
           <div className="flex items-center gap-3.5 mb-4">
@@ -1634,7 +1562,6 @@ function TestimonialsSection() {
 
       <ScrollReveal>
         <div className="max-w-[860px] mx-auto text-center relative" style={{ minHeight: 300 }}>
-          {/* Large decorative quote */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2">
             <Quote size={60} className="opacity-10" style={{ color: GOLD }} fill={GOLD} />
           </div>
@@ -1710,8 +1637,6 @@ function NewsletterSection() {
   );
 }
 
-/* FooterSection removed — now using shared <PageFooter /> */
-
 /* ═══════════════════════════════════════════════════════
    FLOATING ELEMENTS
    ═══════════════════════════════════════════════════════ */
@@ -1764,9 +1689,8 @@ function FloatingElements() {
 
 /* ═══════════════════════════════════════════════════════
    MAIN HOMEPAGE
-   ═══════════��═══════════════════════════════════════════ */
-/* Premium section divider */
-function SectionDivider({ from = "white", to = "white" }: { from?: string; to?: string }) {
+   ═══════════════════════════════════════════════════════ */
+function SectionDivider() {
   return (
     <div className="w-full h-[1px] relative" style={{ background: `linear-gradient(90deg, transparent 5%, ${DARK_NAVY}08 30%, ${DARK_NAVY}12 50%, ${DARK_NAVY}08 70%, transparent 95%)` }} />
   );
