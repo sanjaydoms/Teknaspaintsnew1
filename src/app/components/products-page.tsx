@@ -6,26 +6,26 @@ import { ArrowRight, Check, ChevronDown } from "lucide-react";
 import { useSEO } from "./use-seo";
 
 // Eco Turpentine Oils bottle images
-import imgEcoTurp from "figma:asset/a9b63f38069b36eccad5916b636d19f9c2a28eaa.png";
-import imgEcoTurpPlus from "figma:asset/f717437fa8b95d80708eb097bce5a470bd1af8a2.png";
-import imgEcoTurpPro from "figma:asset/44b0c09009055e53689a503cc07e33da6273ff54.png";
+const imgEcoTurp = "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
+const imgEcoTurpPlus = "https://images.unsplash.com/photo-1572635196237-14b3f281503f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
+const imgEcoTurpPro = "https://images.unsplash.com/photo-1585771724684-38269d6639fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
 // Eco Primax & Health Shield product images
-import imgEcoPrimax from "figma:asset/add0029d15268452b41616dd20a05403c54ed945.png";
+const imgEcoPrimax = "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
 // Eco Primax+ bucket images (Interior & Exterior Emulsions)
-import imgEcoPrimaxPlusBucket from "figma:asset/a9451194462fff0c801e1591013687f39264e8a1.png";
-import imgEcoPrimaxPlusBucketBack from "figma:asset/1605b49381c8747c2d66e22594db4a7efc4a8330.png";
+const imgEcoPrimaxPlusBucket = "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
+const imgEcoPrimaxPlusBucketBack = "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
 // Eco Primax can variants (Protective Coats & Health Shield)
-import imgEcoPrimaxPro from "figma:asset/c1de157b6e7e7955a05d67a114661cb2e4cf10a3.png";
-import imgEcoPrimaxBase from "figma:asset/e83e811049e145916b50f7424262fbade4e8e3c6.png";
-import imgEcoPrimaxPlus from "figma:asset/fd029c39d913a121b0eab009750d36c269d7efc7.png";
+const imgEcoPrimaxPro = "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
+const imgEcoPrimaxBase = "https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
+const imgEcoPrimaxPlus = "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
 // Eco Textured Paints product images
-import imgTexnasWallFront from "figma:asset/386cc737611c0e6d579cf697f6cd23bca75f9803.png";
-import imgTexnasWallBack from "figma:asset/916374a76635a3d055f4911947ba906569918e7e.png";
-import imgTexnasMarbleFront from "figma:asset/c2b21f1944f85b44af247f1116756bfbae8bbafb.png";
-import imgTexnasMarbleBack from "figma:asset/654c618466d548967e892c2cc15e9da10974557d.png";
+const imgTexnasWallFront = "https://images.unsplash.com/photo-1615529328331-f8917597711f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
+const imgTexnasWallBack = "https://images.unsplash.com/photo-1558905586-b023b72dd71a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
+const imgTexnasMarbleFront = "https://images.unsplash.com/photo-1604147706283-d7119b5b822c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
+const imgTexnasMarbleBack = "https://images.unsplash.com/photo-1594844532765-d933e5a64bca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
 // Low-VOC Primers product images
-import imgEcoPrimaxProBucket from "figma:asset/74a8bc66dcf93c20b02812dbe3aa28edceabc3dc.png";
-import imgEcoPrimaxProBucketBack from "figma:asset/c99e0519d8d5b70fc504fb6f9fa3063304d0659d.png";
+const imgEcoPrimaxProBucket = "https://images.unsplash.com/photo-1572202730209-7d825d069571?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
+const imgEcoPrimaxProBucketBack = "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
 
 const GOLD = "#d4a24e";
 const SIENNA = "#c75b3a";
