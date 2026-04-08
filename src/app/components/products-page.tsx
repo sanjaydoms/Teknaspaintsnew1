@@ -7,7 +7,7 @@ import { useSEO } from "./use-seo";
 
 // Eco Turpentine Oils bottle images
 const imgEcoTurp = "/products/ecoturp-bottlemockup1.png";
-const imgEcoTurpPlus = "https://images.unsplash.com/photo-1572635196237-14b3f281503f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
+const imgEcoTurpPlus = "/products/ecoturp-bottlemockup2.png";
 const imgEcoTurpPro = "https://images.unsplash.com/photo-1585771724684-38269d6639fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
 // Eco Primax & Health Shield product images
 const imgEcoPrimax = "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
