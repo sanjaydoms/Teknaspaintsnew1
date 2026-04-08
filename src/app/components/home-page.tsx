@@ -7,7 +7,7 @@ import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight, Play, Leaf, Shield
 import { useSEO } from "./use-seo";
 
 /* ── Real product images (only used ones) ── */
-const imgEcoTurpPlus = "https://images.unsplash.com/photo-1572635196237-14b3f281503f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
+const imgEcoTurpPlus = "/ecoturp-bottlemockup2.png";
 const imgEcoPrimaxPlusBucket = "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
 const imgEcoPrimaxBase = "https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
 const imgTexnasMarbleFront = "https://images.unsplash.com/photo-1604147706283-d7119b5b822c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
