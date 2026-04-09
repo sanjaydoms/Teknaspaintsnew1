@@ -1,5 +1,4 @@
 import { useNavigation } from "./navigation-context";
-import teknasLogo from "/Teknas favicon.png";
 import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Youtube, Linkedin } from "lucide-react";
 
 const GOLD = "#d4a24e";
@@ -25,11 +24,39 @@ export function PageFooter() {
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-10 lg:gap-[60px] pb-12 lg:pb-[60px] border-b border-white/10">
         {/* Brand column */}
         <div>
-          <img
-            src={teknasLogo}
-            alt="Teknas Paints"
-            className="h-[60px] lg:h-[80px] w-auto object-contain mb-5 lg:mb-6"
-          />
+          {/* Inline logo — no file dependency */}
+          <div
+            className="mb-5 lg:mb-6 cursor-pointer"
+            onClick={navigateHome}
+          >
+            <div className="flex items-center gap-2">
+              {/* Icon mark */}
+              <div
+                className="w-[40px] h-[40px] rounded-[8px] flex items-center justify-center shrink-0"
+                style={{ backgroundColor: SIENNA }}
+              >
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <path d="M11 2L3 9v11h5v-6h6v6h5V9L11 2z" fill="white" strokeLinejoin="round" />
+                </svg>
+              </div>
+              {/* Word mark */}
+              <div>
+                <p
+                  className="font-['Fira_Sans',sans-serif] text-[22px] text-white m-0 leading-[1]"
+                  style={{ fontWeight: 700, letterSpacing: "2px" }}
+                >
+                  TEKNAS
+                </p>
+                <p
+                  className="font-['Fira_Sans',sans-serif] text-[9px] tracking-[4px] m-0 uppercase"
+                  style={{ color: GOLD, fontWeight: 500 }}
+                >
+                  Paints
+                </p>
+              </div>
+            </div>
+          </div>
+
           <p className="font-['Fira_Sans',sans-serif] text-[14px] leading-[24px] text-[#fffdf6]/50 m-0 mb-6 lg:mb-7 max-w-[280px]">
             Pioneering eco-friendly paint solutions for modern living. Sustainable, beautiful, and built to last.
           </p>
