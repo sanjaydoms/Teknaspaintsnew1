@@ -4,11 +4,11 @@ import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight, ChevronDown, ChevronUp, Droplets, Shield, Leaf, Sun, Paintbrush, Home, Warehouse } from "lucide-react";
 
 /* ── Real product images ── */
-import imgEcoPrimax from "figma:asset/add0029d15268452b41616dd20a05403c54ed945.png";
-import imgEcoPrimaxPlusBucket from "figma:asset/a9451194462fff0c801e1591013687f39264e8a1.png";
-import imgEcoPrimaxBase from "figma:asset/e83e811049e145916b50f7424262fbade4e8e3c6.png";
-import imgEcoTurpPlus from "figma:asset/f717437fa8b95d80708eb097bce5a470bd1af8a2.png";
-import imgTexnasMarbleFront from "figma:asset/c2b21f1944f85b44af247f1116756bfbae8bbafb.png";
+const imgEcoPrimax = "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
+const imgEcoPrimaxPlusBucket = "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
+const imgEcoPrimaxBase = "https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
+const imgEcoTurpPlus = "https://images.unsplash.com/photo-1572635196237-14b3f281503f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
+const imgTexnasMarbleFront = "https://images.unsplash.com/photo-1604147706283-d7119b5b822c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400";
 
 /* ═══════════════════════════════════════════════════════
    PALETTE
@@ -348,12 +348,10 @@ export function ProductShowcaseScroll() {
     const THRESHOLD = 80;
 
     const handleWheel = (e: WheelEvent) => {
-      // Only intercept when this section is mostly in view
       const rect = el.getBoundingClientRect();
       const inView = rect.top < window.innerHeight * 0.3 && rect.bottom > window.innerHeight * 0.7;
       if (!inView) return;
 
-      // If at first product and scrolling up, or last product and scrolling down, let page scroll
       if ((active === 0 && e.deltaY < 0) || (active === PRODUCTS.length - 1 && e.deltaY > 0)) {
         accumulatedDelta = 0;
         return;
@@ -609,7 +607,7 @@ export function ProductShowcaseScroll() {
       {/* Navigation Dots */}
       <NavDots active={active} total={PRODUCTS.length} onSelect={goTo} products={PRODUCTS} />
 
-      {/* Bottom: Arrow navigation + counter (mobile) */}
+      {/* Bottom: Arrow navigation + counter */}
       <div className={`absolute bottom-6 left-0 right-0 z-20 flex items-center justify-between ${SECTION_PX}`}>
         <div className="flex items-center gap-3">
           <button
