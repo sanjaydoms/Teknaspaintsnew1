@@ -7,6 +7,7 @@ import {
 } from "./paint-splash-effects";
 import { ScrollReveal } from "./micro-interactions";
 import { useSEO } from "./use-seo";
+import { getProductPricing } from "./product-catalog";
 
 /* ── Gallery thumbnails ── */
 const THUMB_EXTRAS = [
@@ -17,10 +18,10 @@ const THUMB_EXTRAS = [
 
 /* ── Related products ── */
 const RELATED = [
-  { name: "Eco Turp", price: "$39.00", oldPrice: "$69.00", img: "https://images.unsplash.com/photo-1696623487653-cc0ebb9db05c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600" },
-  { name: "Eco Primax+", price: "$42.00", oldPrice: "$65.00", img: "https://images.unsplash.com/photo-1675229502792-1011e47b427f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600" },
-  { name: "Eco Texnas Wall Textures", price: "$45.00", oldPrice: "$75.00", img: "https://images.unsplash.com/photo-1683465559298-deb3dae9139c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600" },
-  { name: "Eco Turp Pro", price: "$59.00", oldPrice: "$99.00", img: "https://images.unsplash.com/photo-1769025390992-3978c290c13b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600" },
+  { name: "Eco Turp", img: "https://images.unsplash.com/photo-1696623487653-cc0ebb9db05c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600" },
+  { name: "Eco Primax+", img: "https://images.unsplash.com/photo-1675229502792-1011e47b427f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600" },
+  { name: "Eco Texnas Wall Textures", img: "https://images.unsplash.com/photo-1683465559298-deb3dae9139c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600" },
+  { name: "Eco Turp Pro", img: "https://images.unsplash.com/photo-1769025390992-3978c290c13b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600" },
 ];
 
 /* ── Color swatches ── */
@@ -36,7 +37,7 @@ const COLORS = [
 
 /* ── Feature icons data ── */
 const FEATURES = [
-  { title: "Carbon-Neutral Shipping", desc: "Free carbon-offset delivery on all orders above $200 with fast worldwide shipping.", icon: "truck" },
+  { title: "Carbon-Neutral Shipping", desc: "Free carbon-offset delivery on all orders above ₹5,000 with fast nationwide shipping.", icon: "truck" },
   { title: "24/7 Eco-Paint Support", desc: "Get expert help anytime on low-VOC formulas, application methods, and sustainable coatings.", icon: "headphones" },
   { title: "Secured Payment", desc: "Your transactions are protected with 256-bit encryption and buyer protection guarantee.", icon: "shield" },
   { title: "GREENGUARD Certified", desc: "Every product meets GREENGUARD Gold standards for low chemical emissions and indoor air quality.", icon: "check" },
@@ -220,6 +221,7 @@ export function ProductDetailPage({ product }: { product: ProductInfo }) {
 
   const backLabel = previousView === "products" ? "Back to All Products" : "Back to Home";
   const thumbs = [product.image, ...THUMB_EXTRAS];
+  const pricing = getProductPricing(product.name);
 
   /* handlers */
   const addToCart = () => toast.success(`Added ${qty}× ${product.name} to cart`, { description: `Color: ${COLORS[selectedColor].name}` });
@@ -389,8 +391,8 @@ export function ProductDetailPage({ product }: { product: ProductInfo }) {
 
             {/* Price */}
             <div className="flex items-baseline gap-3 mt-6">
-              <span className="text-[32px] md:text-[36px] font-medium text-[#111]" style={{ lineHeight: 1 }}>$39.00</span>
-              <span className="text-[22px] md:text-[24px] text-[#b0b0b0] line-through" style={{ lineHeight: 1 }}>$69.00</span>
+              <span className="text-[32px] md:text-[36px] font-medium text-[#111]" style={{ lineHeight: 1 }}>{pricing.price}</span>
+              <span className="text-[22px] md:text-[24px] text-[#b0b0b0] line-through" style={{ lineHeight: 1 }}>{pricing.oldPrice}</span>
             </div>
 
             {/* Separator */}
@@ -486,7 +488,7 @@ export function ProductDetailPage({ product }: { product: ProductInfo }) {
               <div className="flex items-start gap-3">
                 <span className="text-[#c75b3a] mt-0.5 shrink-0"><Ico type="delivery" size={18} /></span>
                 <p className="text-[14px] text-[#555]" style={{ lineHeight: 1.6 }}>
-                  Worldwide Shipping on all orders $200+, Delivery in 2-5 working days.{" "}
+                  Nationwide Shipping on all orders ₹5,000+, Delivery in 2-5 working days.{" "}
                   <span className="underline cursor-pointer hover:text-[#333]">Shipping &amp; Return</span>
                 </p>
               </div>
@@ -585,7 +587,9 @@ export function ProductDetailPage({ product }: { product: ProductInfo }) {
         </ScrollReveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8">
-          {RELATED.map((r, ri) => (
+          {RELATED.map((r, ri) => {
+            const rPricing = getProductPricing(r.name);
+            return (
             <ScrollReveal key={r.name} direction="up" delay={0.1 + ri * 0.1} duration={0.7}>
             <div
               className="group cursor-pointer"
@@ -601,13 +605,14 @@ export function ProductDetailPage({ product }: { product: ProductInfo }) {
               <div className="mt-4">
                 <p className="text-[17px] md:text-[19px] font-medium text-[#222] group-hover:text-[#c75b3a] transition-colors">{r.name}</p>
                 <p className="text-[15px] mt-1">
-                  <span className="text-[#333]">{r.price}</span>
-                  <span className="text-[#bbb] line-through ml-2">{r.oldPrice}</span>
+                  <span className="text-[#333]">{rPricing.price}</span>
+                  <span className="text-[#bbb] line-through ml-2">{rPricing.oldPrice}</span>
                 </p>
               </div>
             </div>
             </ScrollReveal>
-          ))}
+            );
+          })}
         </div>
       </section>
 

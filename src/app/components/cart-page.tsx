@@ -4,6 +4,7 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { ScrollReveal } from "./micro-interactions";
 import { Minus, Plus, X, ShoppingBag, ArrowRight, Truck, Shield, RotateCcw } from "lucide-react";
 import { useSEO } from "./use-seo";
+import { getProductPricing } from "./product-catalog";
 
 const GOLD = "#d4a24e";
 const SIENNA = "#c75b3a";
@@ -22,9 +23,9 @@ interface CartItem {
 }
 
 const INITIAL_CART: CartItem[] = [
-  { id: 1, name: "Royale Luxury Emulsion", variant: "Ivory Dream #F5F0E6", size: "4 Litres", price: 2450, qty: 2, image: "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=120&h=120&fit=crop" },
-  { id: 2, name: "Apex Weatherproof", variant: "Terracotta Red #C75B3A", size: "10 Litres", price: 4800, qty: 1, image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=120&h=120&fit=crop" },
-  { id: 3, name: "Damp Guard Primer", variant: "White Base", size: "1 Litre", price: 680, qty: 3, image: "https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=120&h=120&fit=crop" },
+  { id: 1, name: "Royale Luxury Emulsion", variant: "Ivory Dream #F5F0E6", size: "4 Litres", price: getProductPricing("Royale Luxury Emulsion").priceNum, qty: 2, image: "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=120&h=120&fit=crop" },
+  { id: 2, name: "Apex Weatherproof", variant: "Terracotta Red #C75B3A", size: "10 Litres", price: getProductPricing("Apex Weatherproof").priceNum, qty: 1, image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=120&h=120&fit=crop" },
+  { id: 3, name: "Damp Guard Primer", variant: "White Base", size: "1 Litre", price: getProductPricing("Damp Guard Primer").priceNum, qty: 3, image: "https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=120&h=120&fit=crop" },
 ];
 
 export function CartPage() {
