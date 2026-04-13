@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import svgPaths from "./svg-dwadcli01s";
-import imgContainer from "figma:asset/de65f93dd937c1903455d99ffb0367846c56a64b.png";
+import imgContainer from "figma:asset/0782cf6d2e471283b31a4890c291dd82863dc492.png";
 
 function BackgroundImage1({ children }: React.PropsWithChildren<{}>) {
   return (

@@ -1,5 +1,5 @@
 import imgContainer from "figma:asset/a7401482e81bbe57967f22f543eb4cabd8458bab.png";
-import imgContainer1 from "figma:asset/deb1183c5e0196b61b5d1c05bd60f9bff3597413.png";
+import imgContainer1 from "figma:asset/0bcb93b7d4ef916cbb88afe26ede2b2f7235b4d1.png";
 import imgContainer2 from "figma:asset/282e9a38bd13dade9a6f931acc9d27bc666f2037.png";
 
 function Wrapper({ children }: React.PropsWithChildren<{}>) {
