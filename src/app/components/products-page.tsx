@@ -7,7 +7,7 @@ import { useSEO } from "./use-seo";
 
 // Eco Turpentine Oils bottle images
 import imgEcoTurp from "figma:asset/a9b63f38069b36eccad5916b636d19f9c2a28eaa.png";
-import imgEcoTurpPlus from "figma:asset/f717437fa8b95d80708eb097bce5a470bd1af8a2.png";
+import imgEcoTurpPlus from "figma:asset/a9b63f38069b36eccad5916b636d19f9c2a28eaa.png";
 import imgEcoTurpPro from "figma:asset/44b0c09009055e53689a503cc07e33da6273ff54.png";
 // Eco Primax & Health Shield product images
 import imgEcoPrimax from "figma:asset/add0029d15268452b41616dd20a05403c54ed945.png";
@@ -16,16 +16,16 @@ import imgEcoPrimaxPlusBucket from "figma:asset/a9451194462fff0c801e1591013687f3
 import imgEcoPrimaxPlusBucketBack from "figma:asset/1605b49381c8747c2d66e22594db4a7efc4a8330.png";
 // Eco Primax can variants (Protective Coats & Health Shield)
 import imgEcoPrimaxPro from "figma:asset/c1de157b6e7e7955a05d67a114661cb2e4cf10a3.png";
-import imgEcoPrimaxBase from "figma:asset/e83e811049e145916b50f7424262fbade4e8e3c6.png";
-import imgEcoPrimaxPlus from "figma:asset/fd029c39d913a121b0eab009750d36c269d7efc7.png";
+import imgEcoPrimaxBase from "figma:asset/c1de157b6e7e7955a05d67a114661cb2e4cf10a3.png";
+import imgEcoPrimaxPlus from "figma:asset/a9451194462fff0c801e1591013687f39264e8a1.png";
 // Eco Textured Paints product images
 import imgTexnasWallFront from "figma:asset/386cc737611c0e6d579cf697f6cd23bca75f9803.png";
 import imgTexnasWallBack from "figma:asset/916374a76635a3d055f4911947ba906569918e7e.png";
-import imgTexnasMarbleFront from "figma:asset/c2b21f1944f85b44af247f1116756bfbae8bbafb.png";
+import imgTexnasMarbleFront from "figma:asset/386cc737611c0e6d579cf697f6cd23bca75f9803.png";
 import imgTexnasMarbleBack from "figma:asset/654c618466d548967e892c2cc15e9da10974557d.png";
 // Low-VOC Primers product images
 import imgEcoPrimaxProBucket from "figma:asset/74a8bc66dcf93c20b02812dbe3aa28edceabc3dc.png";
-import imgEcoPrimaxProBucketBack from "figma:asset/c99e0519d8d5b70fc504fb6f9fa3063304d0659d.png";
+import imgEcoPrimaxProBucketBack from "figma:asset/1605b49381c8747c2d66e22594db4a7efc4a8330.png";
 
 const GOLD = "#d4a24e";
 const SIENNA = "#c75b3a";

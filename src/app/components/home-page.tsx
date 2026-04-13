@@ -8,10 +8,10 @@ import { useSEO } from "./use-seo";
 import { getProductPricing } from "./product-catalog";
 
 /* ── Real product images (only used ones) ── */
-import imgEcoTurpPlus from "figma:asset/f717437fa8b95d80708eb097bce5a470bd1af8a2.png";
+import imgEcoTurpPlus from "figma:asset/a9b63f38069b36eccad5916b636d19f9c2a28eaa.png";
 import imgEcoPrimaxPlusBucket from "figma:asset/a9451194462fff0c801e1591013687f39264e8a1.png";
-import imgEcoPrimaxBase from "figma:asset/e83e811049e145916b50f7424262fbade4e8e3c6.png";
-import imgTexnasMarbleFront from "figma:asset/c2b21f1944f85b44af247f1116756bfbae8bbafb.png";
+import imgEcoPrimaxBase from "figma:asset/c1de157b6e7e7955a05d67a114661cb2e4cf10a3.png";
+import imgTexnasMarbleFront from "figma:asset/386cc737611c0e6d579cf697f6cd23bca75f9803.png";
 import imgEcoPrimaxProBucket from "figma:asset/74a8bc66dcf93c20b02812dbe3aa28edceabc3dc.png";
 
 /* ═══════════════════════════════════════════════════════
