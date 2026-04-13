@@ -223,8 +223,10 @@ export function ProductDetailPage({ product }: { product: ProductInfo }) {
   const thumbs = [product.image, ...THUMB_EXTRAS];
   const pricing = getProductPricing(product.name);
 
+  const isTurpentine = product.category === "Eco Turpentine Oils";
+
   /* handlers */
-  const addToCart = () => toast.success(`Added ${qty}× ${product.name} to cart`, { description: `Color: ${COLORS[selectedColor].name}` });
+  const addToCart = () => toast.success(`Added ${qty}× ${product.name} to cart`, { description: isTurpentine ? `${product.name} × ${qty}` : `Color: ${COLORS[selectedColor].name}` });
   const buyNow = () => toast.success("Redirecting to checkout...", { description: `${product.name} × ${qty}` });
   const share = () => { navigator.clipboard?.writeText(window.location.href); toast.success("Link copied to clipboard!"); };
   const askQ = () => toast("Question form coming soon!", { description: "Our team typically responds within 24 hours." });
@@ -407,6 +409,7 @@ export function ProductDetailPage({ product }: { product: ProductInfo }) {
             <div className="my-6" style={{ height: 1, backgroundColor: "#ebebeb" }} />
 
             {/* Color swatches */}
+            {!isTurpentine && (
             <div>
               <p className="text-[15px] md:text-[16px] text-[#333] mb-3">
                 <span className="font-medium">Color :</span>{" "}
@@ -432,6 +435,7 @@ export function ProductDetailPage({ product }: { product: ProductInfo }) {
                 ))}
               </div>
             </div>
+            )}
 
             {/* Quantity + Cart row */}
             <div className="flex flex-col sm:flex-row items-stretch gap-3 mt-8">
