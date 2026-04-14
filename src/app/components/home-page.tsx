@@ -1775,8 +1775,8 @@ function SectionDivider({ from = "white", to = "white" }: { from?: string; to?: 
 
 export function HomePage() {
   useSEO({
-    title: "TEXNAS Paints | Premium Wall Paints & Home Painting Solutions in India",
-    description: "Discover high-quality wall paints, interior & exterior paints at TEXNAS. Durable, stylish, and affordable painting solutions for your home. Best paint company in India.",
+    title: "Teknas Paints | Premium Wall Paints & Home Painting Solutions in India",
+    description: "Discover high-quality wall paints, interior & exterior paints at Teknas. Durable, stylish, and affordable painting solutions for your home. Best paint company in India.",
     jsonLd: [
       {
         "@context": "https://schema.org",
