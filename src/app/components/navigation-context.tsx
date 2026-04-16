@@ -1,4 +1,6 @@
-import { createContext, useContext, useState, useRef, type ReactNode } from "react";
+import { createContext, useContext, useMemo, useRef, useEffect, type ReactNode } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { PAGE_URLS, getProductDetailUrl, getBlogPostUrl, getSearchUrl } from "../config/page-urls";
 
 export interface ProductInfo {
   name: string;
@@ -23,7 +25,6 @@ export type ViewType =
 interface NavigationContextType {
   currentView: ViewType;
   previousView: ViewType;
-  selectedProduct: ProductInfo | null;
   searchQuery: string;
   navigateToProduct: (product: ProductInfo) => void;
   navigateHome: () => void;
@@ -37,14 +38,12 @@ interface NavigationContextType {
   navigateToCart: () => void;
   navigateToSearch: (query?: string) => void;
   navigateToBlog: (postSlug?: string) => void;
-  selectedBlogPost: string | null;
   navigateBack: () => void;
 }
 
 const NavigationContext = createContext<NavigationContextType>({
   currentView: "home",
   previousView: "home",
-  selectedProduct: null,
   searchQuery: "",
   navigateToProduct: () => {},
   navigateHome: () => {},
@@ -58,57 +57,75 @@ const NavigationContext = createContext<NavigationContextType>({
   navigateToCart: () => {},
   navigateToSearch: () => {},
   navigateToBlog: () => {},
-  selectedBlogPost: null,
   navigateBack: () => {},
 });
 
+const getViewFromPath = (pathname: string): ViewType => {
+  if (pathname === PAGE_URLS.home) return "home";
+  if (pathname === PAGE_URLS.products) return "products";
+  if (pathname.startsWith("/products/")) return "product-detail";
+  if (pathname === PAGE_URLS.about) return "about";
+  if (pathname === PAGE_URLS.locateDealers) return "locate-dealers";
+  if (pathname === PAGE_URLS.contact) return "contact";
+  if (pathname === PAGE_URLS.ourCompany) return "our-company";
+  if (pathname === PAGE_URLS.investors) return "investors";
+  if (pathname === PAGE_URLS.account) return "account";
+  if (pathname === PAGE_URLS.cart) return "cart";
+  if (pathname === PAGE_URLS.search) return "search";
+  if (pathname === PAGE_URLS.blog || pathname.startsWith("/blog/")) return "blog";
+  return "home";
+};
+
+export const slugifyProductName = (productName: string): string =>
+  productName
+    .trim()
+    .toLowerCase()
+    .replace(/[–—]/g, "-")
+    .replace(/\+/g, "plus")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+
 export function NavigationProvider({ children }: { children: ReactNode }) {
-  const [currentView, setCurrentView] = useState<ViewType>("home");
-  const [selectedProduct, setSelectedProduct] = useState<ProductInfo | null>(null);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedBlogPost, setSelectedBlogPost] = useState<string | null>(null);
-  const previousViewRef = useRef<ViewType>("home");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const previousPathRef = useRef(location.pathname);
+  const previousViewRef = useRef<ViewType>(getViewFromPath(location.pathname));
 
-  const goTo = (view: ViewType) => {
-    previousViewRef.current = currentView;
-    setCurrentView(view);
-    setSelectedProduct(null);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const currentView = useMemo(() => getViewFromPath(location.pathname), [location.pathname]);
+  const searchQuery = useMemo(() => new URLSearchParams(location.search).get("q") || "", [location.search]);
 
-  const navigateToProduct = (product: ProductInfo) => {
-    previousViewRef.current = currentView;
-    setSelectedProduct(product);
-    setCurrentView("product-detail");
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  useEffect(() => {
+    previousViewRef.current = getViewFromPath(previousPathRef.current);
+    previousPathRef.current = location.pathname;
+  }, [location.pathname]);
 
-  const navigateHome = () => goTo("home");
-  const navigateToProducts = () => goTo("products");
-  const navigateToAbout = () => goTo("about");
-  const navigateToDealers = () => goTo("locate-dealers");
-  const navigateToContact = () => goTo("contact");
-  const navigateToOurCompany = () => goTo("our-company");
-  const navigateToInvestors = () => goTo("investors");
-  const navigateToAccount = () => goTo("account");
-  const navigateToCart = () => goTo("cart");
-  const navigateToSearch = (query?: string) => {
-    setSearchQuery(query || "");
-    goTo("search");
-  };
-
-  const navigateToBlog = (postSlug?: string) => {
-    setSelectedBlogPost(postSlug || null);
-    goTo("blog");
-  };
-
+  const navigateHome = () => navigate(PAGE_URLS.home);
+  const navigateToProducts = () => navigate(PAGE_URLS.products);
+  const navigateToAbout = () => navigate(PAGE_URLS.about);
+  const navigateToDealers = () => navigate(PAGE_URLS.locateDealers);
+  const navigateToContact = () => navigate(PAGE_URLS.contact);
+  const navigateToOurCompany = () => navigate(PAGE_URLS.ourCompany);
+  const navigateToInvestors = () => navigate(PAGE_URLS.investors);
+  const navigateToAccount = () => navigate(PAGE_URLS.account);
+  const navigateToCart = () => navigate(PAGE_URLS.cart);
+  const navigateToSearch = (query?: string) => navigate(getSearchUrl(query));
+  const navigateToProduct = (product: ProductInfo) => navigate(getProductDetailUrl(slugifyProductName(product.name)));
+  const navigateToBlog = (postSlug?: string) => navigate(postSlug ? getBlogPostUrl(postSlug) : PAGE_URLS.blog);
   const navigateBack = () => {
     const prev = previousViewRef.current;
     if (prev === "products") {
       navigateToProducts();
-    } else {
-      navigateHome();
+      return;
     }
+    if (prev === "blog") {
+      navigate(PAGE_URLS.blog);
+      return;
+    }
+    if (prev === "search") {
+      navigate(PAGE_URLS.search);
+      return;
+    }
+    navigate(PAGE_URLS.home);
   };
 
   return (
@@ -116,7 +133,6 @@ export function NavigationProvider({ children }: { children: ReactNode }) {
       value={{
         currentView,
         previousView: previousViewRef.current,
-        selectedProduct,
         searchQuery,
         navigateToProduct,
         navigateHome,
@@ -130,7 +146,6 @@ export function NavigationProvider({ children }: { children: ReactNode }) {
         navigateToCart,
         navigateToSearch,
         navigateToBlog,
-        selectedBlogPost,
         navigateBack,
       }}
     >

@@ -252,7 +252,7 @@ function PopularShadesSection() {
   );
 }
 
-const ALL_PRODUCTS = [
+export const ALL_PRODUCTS = [
   {
     category: "Eco Turpentine Oils",
     accent: SIENNA,

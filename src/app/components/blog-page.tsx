@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef, type ReactNode, type CSSProperties } from "react";
-import { useNavigation } from "./navigation-context";
 import { BlogPostPage } from "./blog-post-page";
 import {
   BLOG_POSTS,
@@ -582,13 +581,6 @@ export function BlogPage() {
       },
     ],
   });
-
-  const { selectedBlogPost } = useNavigation();
-
-  if (selectedBlogPost) {
-    const post = BLOG_POSTS.find((p) => p.slug === selectedBlogPost);
-    if (post) return <BlogPostPage post={post} />;
-  }
 
   return <BlogListing />;
 }
